@@ -13,6 +13,8 @@ public class Checkbox {
     }
 
     public void select() {
-        driver.findElement(By.xpath(String.format("//span[text()='%s']", label))).click();
+        driver.findElement(By.xpath(String.format
+                ("//span[text()='%s']/ancestor::lightning-input//input[@type='checkbox']",
+                label))).click();
     }
 }
