@@ -1,6 +1,7 @@
 package pages;
 
 import dto.Account;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,7 @@ import wrappers.DropDown;
 import wrappers.Input;
 import wrappers.TextArea;
 
+@Log4j2
 public class NewAccountModal extends BasePage {
 
     private static final By SAVE_BUTTON = By.xpath("//*[@name='SaveEdit']");
@@ -21,20 +23,24 @@ public class NewAccountModal extends BasePage {
     }
 
     public NewAccountModal open() {
+        log.info("Open New Account Modal page");
         driver.get(NEW_BUTTON_URL);
         return this;
     }
 
     public NewAccountModal isPageOpened() {
+        log.info("New Account modal is successfully opened");
         wait.until(ExpectedConditions.visibilityOfElementLocated(SAVE_BUTTON));
         return this;
     }
 
     public void clickSaveButton() {
+        log.info("Click Save button");
         driver.findElement(SAVE_BUTTON).click();
     }
 
     private void setInputValue(String fieldName, String value) {
+        log.info("Setting field name: {}, for value: {}", fieldName, value);
         String locator = String.format(INPUT_FIELD, fieldName);
         WebElement input = driver.findElement(By.xpath(locator));
         input.clear();
@@ -42,16 +48,19 @@ public class NewAccountModal extends BasePage {
     }
 
     public NewAccountModal setName(String name) {
+        log.info("Setting account name: {}", name);
         setInputValue("Name", name);
         return this;
     }
 
     public NewAccountModal setWebsite(String website) {
+        log.info("Setting website: {}", website);
         setInputValue("Website", website);
         return this;
     }
 
     public NewAccountModal createAccount(Account account) {
+        log.info("Сreating account: {}", account.getName());
         new Input(driver, "Account Name").write(account.getName());
         new Input(driver, "Phone").write(account.getPhone());
         new Input(driver, "Fax").write(account.getFax());
@@ -86,6 +95,4 @@ public class NewAccountModal extends BasePage {
         new TextArea(driver, "Description").write(account.getDescription());
         return this;
     }
-
-
 }

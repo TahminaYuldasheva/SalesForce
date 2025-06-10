@@ -4,10 +4,19 @@ import dto.Contact;
 import org.testng.annotations.Test;
 
 public class NewContactTest extends BaseTest {
-    Contact contact = new Contact("Mr.", "Jordani", "Jovanovich", "+37564345678",
-            "62762538", "Biba", "Boba", "+48564345678", "+48564345678",
-            "johnwick@gmail.com");
 
+    Contact contact = Contact.builder()
+            .salutation("Mr.")
+            .firstName("John")
+            .lastName("Wick")
+            .phone("+375295642323")
+            .homePhone("3456789")
+            .title("Boba")
+            .department("Boba")
+            .mobile("+48987654345")
+            .fax("3456789")
+            .email("johnwick@gmail.com")
+            .build();
 
     @Test
     public void checkCreateContact() throws InterruptedException {

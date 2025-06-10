@@ -3,7 +3,7 @@ package dto;
 import com.github.javafaker.Faker;
 
 public class AccountFactory {
-    public static Account getAccount(String rating, String website, String accountSite,
+  /*  public static Account getAccount(String rating, String website, String accountSite,
                                      String tickerSymbol, String type,
                                      String ownership, String industry, String customerPriority, String sla,
                                      String active, String upsellOpportunity) {
@@ -16,5 +16,5 @@ public class AccountFactory {
                 faker.address().city(), faker.address().state(), faker.address().zipCode(), faker.address().country(),
                 customerPriority, sla, faker.number().digits(1), active, faker.number().digits(5),
                 upsellOpportunity, faker.lorem().sentence(15));
-    }
+    }*/
 }
