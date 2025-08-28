@@ -1,5 +1,6 @@
 package wrappers;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+@Log4j2
 public class DropDown {
     WebDriver driver;
     String label;
@@ -22,6 +24,7 @@ public class DropDown {
     }
 
     public void select(String option) {
+        log.info("Selecting: {} from the dropdown: {}", option, label);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(selectPattern + "//button", label))));
         WebElement dropdown = driver.findElement(By.xpath(String.format(selectPattern + "//button", label)));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown);
